@@ -57,6 +57,8 @@ message LoginRequest {
   string hwid        = 2;
   string license_key = 3;
 }
+
+// some
 message LoginResponse {
   string token = 1;
 }
