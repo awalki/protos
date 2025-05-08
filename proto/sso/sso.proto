@@ -2,27 +2,61 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "awalki.ssov1";
+option go_package = "awalki.ssov2";
+
+import "google/protobuf/timestamp.proto";
 
 service Auth {
-  rpc Register (RegisterRequest) returns (RegisterResponse);
-  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc Register          (RegisterRequest)        returns (RegisterResponse);
+  rpc Login             (LoginRequest)           returns (LoginResponse);
+  rpc CreateLicense     (CreateLicenseRequest)   returns (CreateLicenseResponse);
+  rpc LinkHWID          (LinkHWIDRequest)        returns (LinkHWIDResponse);
+  rpc RenewLicense      (RenewLicenseRequest)    returns (RenewLicenseResponse);
 }
 
 message RegisterRequest {
   int64 telegram_id = 1;
 }
-
 message RegisterResponse {
   int64 telegram_id = 1;
 }
 
-message LoginRequest {
-  string username = 1;
-  string hwid = 2;
-  string license_key = 3;
+message CreateLicenseRequest {
+  string license_key  = 1;
+  string username     = 2;
+  int64  telegram_id  = 3;
+  google.protobuf.Timestamp expiry_date = 4;
+}
+message CreateLicenseResponse {
+  string license_key  = 1;
+  string username     = 2;
+  int64  telegram_id  = 3;
+  google.protobuf.Timestamp expiry_date = 4;
 }
 
+message LinkHWIDRequest {
+  string username = 1;
+  string hwid     = 2;
+}
+message LinkHWIDResponse {
+  string username = 1;
+  string hwid     = 2;
+}
+
+message RenewLicenseRequest {
+  int64  telegram_id  = 1;
+  google.protobuf.Timestamp expiry_date = 2;
+}
+message RenewLicenseResponse {
+  int64  telegram_id  = 1;
+  google.protobuf.Timestamp expiry_date = 2;
+}
+
+message LoginRequest {
+  string username    = 1;
+  string hwid        = 2;
+  string license_key = 3;
+}
 message LoginResponse {
   string token = 1;
 }
