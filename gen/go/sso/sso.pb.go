@@ -4,7 +4,7 @@
 // 	protoc        v6.30.2
 // source: sso/sso.proto
 
-package awalki_ssov1
+package awalki_ssov2
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -22,7 +22,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Регистрация пользователя по Telegram ID
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TelegramId    int64                  `protobuf:"varint,1,opt,name=telegram_id,json=telegramId,proto3" json:"telegram_id,omitempty"`
@@ -111,7 +110,6 @@ func (x *RegisterResponse) GetTelegramId() int64 {
 	return 0
 }
 
-// Создание лицензии
 type CreateLicenseRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	LicenseKey    string                 `protobuf:"bytes,1,opt,name=license_key,json=licenseKey,proto3" json:"license_key,omitempty"`
@@ -248,7 +246,6 @@ func (x *CreateLicenseResponse) GetExpiryDate() *timestamppb.Timestamp {
 	return nil
 }
 
-// Привязка HWID к пользователю
 type LinkHWIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
@@ -353,7 +350,6 @@ func (x *LinkHWIDResponse) GetHwid() string {
 	return ""
 }
 
-// Продление лицензии
 type RenewLicenseRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TelegramId    int64                  `protobuf:"varint,1,opt,name=telegram_id,json=telegramId,proto3" json:"telegram_id,omitempty"`
@@ -458,7 +454,6 @@ func (x *RenewLicenseResponse) GetExpiryDate() *timestamppb.Timestamp {
 	return nil
 }
 
-// Вход в систему
 type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
@@ -618,7 +613,7 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12H\n" +
 	"\rCreateLicense\x12\x1a.auth.CreateLicenseRequest\x1a\x1b.auth.CreateLicenseResponse\x129\n" +
 	"\bLinkHWID\x12\x15.auth.LinkHWIDRequest\x1a\x16.auth.LinkHWIDResponse\x12E\n" +
-	"\fRenewLicense\x12\x19.auth.RenewLicenseRequest\x1a\x1a.auth.RenewLicenseResponseB\x0eZ\fawalki.ssov1b\x06proto3"
+	"\fRenewLicense\x12\x19.auth.RenewLicenseRequest\x1a\x1a.auth.RenewLicenseResponseB\x0eZ\fawalki.ssov2b\x06proto3"
 
 var (
 	file_sso_sso_proto_rawDescOnce sync.Once

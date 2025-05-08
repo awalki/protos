@@ -4,7 +4,7 @@
 // - protoc             v6.30.2
 // source: sso/sso.proto
 
-package awalki_ssov1
+package awalki_ssov2
 
 import (
 	context "context"
